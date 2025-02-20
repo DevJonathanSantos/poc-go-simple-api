@@ -3,6 +3,7 @@ package controllers
 import (
 	"net/http"
 
+	"github.com/DevJonathanSantos/poc-go-simple-api/internal/repositories"
 	use_cases "github.com/DevJonathanSantos/poc-go-simple-api/internal/use-cases"
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +12,7 @@ type createCategoryInput struct {
 	Name string `json:"name" binding:"required"`
 }
 
-func CreateCategory(ctx *gin.Context) {
+func CreateCategory(ctx *gin.Context, repository repositories.ICategoryRepository) {
 
 	var body createCategoryInput
 
@@ -25,7 +26,7 @@ func CreateCategory(ctx *gin.Context) {
 		return
 	}
 
-	useCase := use_cases.NewCreateCategoryUseCase()
+	useCase := use_cases.NewCreateCategoryUseCase(repository)
 
 	err := useCase.Execute(body.Name)
 

@@ -5,5 +5,12 @@ POST http://localhost:8080/categories
 Content-Type: application/json
 
 {
-    "name":"Boo"
+    "name":"books"
 }
+
+
+###
+GET  http://localhost:8080/categories
+
+###
+GET  http://localhost:8080/categories/35d204a9-20ae-42f5-9807-7a26bd328e05

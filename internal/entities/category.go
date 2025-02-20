@@ -3,10 +3,12 @@ package entities
 import (
 	"fmt"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type Category struct {
-	ID        uint      `json:"id"`
+	ID        uuid.UUID `json:"id"`
 	Name      string    `json:"name"`
 	CreatedAt time.Time `json:"createdAt"`
 	UpdatedAt time.Time `json:"updatedAt"`
@@ -14,6 +16,7 @@ type Category struct {
 
 func NewCategory(name string) (*Category, error) {
 	category := &Category{
+		ID:        uuid.New(),
 		Name:      name,
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
